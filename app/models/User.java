@@ -32,7 +32,7 @@ public class User extends Model {
     public String phone;
     
     /**
-     * Generic query helper for entity Computer with id Long
+     * Generic query helper for entity User with pk Long
      */
     public static Finder<Long,User> find = new Finder<Long,User>(Long.class, User.class); 
     
@@ -40,7 +40,7 @@ public class User extends Model {
      * Return a page of user
      *
      * @param page Page to display
-     * @param pageSize Number of computers per page
+     * @param pageSize Number of users per page
      * @param sortBy User property used for sorting
      * @param order Sort order (either or asc or desc)
      * @param filter Filter applied on the name column
