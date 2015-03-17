@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the user list
+GET     /                           controllers.UsersApplication.index()
+
+# Users list (look at the default values for pagination parameters)
+GET     /users                  controllers.UsersApplication.userList(p:Int ?= 0, s ?= "last_name", o ?= "asc", f ?= "")
+
+# Add user
+GET     /users/new              controllers.UsersApplication.create()
+POST    /users                  controllers.UsersApplication.save()
+
+# Edit existing user
+GET     /users/:pk              controllers.UsersApplication.userEdit(pk:Long)
+POST    /users/:pk              controllers.UsersApplication.update(pk:Long)
+
+# Delete a user
+POST    /users/:pk/delete       controllers.UsersApplication.delete(pk:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,34 @@
+@(pk: Long, userForm: Form[User])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main {
+    
+    <h1>Edit user</h1>
+    
+    @form(routes.UsersApplication.update(pk)) {
+    @CSRF.formField
+        
+        <fieldset>
+        
+            @inputText(userForm("first_name"), '_label -> "User first name", '_help -> "")
+            @inputText(userForm("last_name"), '_label -> "User last name", '_help -> "")
+            @inputText(userForm("email"), '_label -> "User email", '_help -> "")
+            @inputText(userForm("phone"), '_label -> "User phone", '_help -> "")
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Save this user" class="btn primary"> or 
+            <a href="@routes.UsersApplication.userList()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+    @form(routes.UsersApplication.delete(pk), 'class -> "topRight") {
+    @CSRF.formField
+        <input type="submit" value="Delete this user" class="btn danger">
+    }
+    
+}

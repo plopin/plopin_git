@@ -1,0 +1,29 @@
+@(userForm: Form[User])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main {
+    
+    <h1>Add a user</h1>
+    
+    @form(routes.UsersApplication.save()) {
+    @CSRF.formField
+        
+        <fieldset>
+        
+            @inputText(userForm("first_name"), '_label -> "User first name", '_help -> "")
+            @inputText(userForm("last_name"), '_label -> "User last name", '_help -> "")
+            @inputText(userForm("email"), '_label -> "User email", '_help -> "")
+            @inputText(userForm("phone"), '_label -> "User phone", '_help -> "")
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this user" class="btn primary"> or 
+            <a href="@routes.UsersApplication.userList()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}
